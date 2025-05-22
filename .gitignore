@@ -1,0 +1,26 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Next.js build output
+/.next/
+/out/
+
+# Vercel (se usar para deploy)
+/.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment variables
+.env*.local
+
+# Test Lixo
+test-tasking-app/
+
+# Outros
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
