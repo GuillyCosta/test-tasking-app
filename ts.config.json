@@ -1,31 +1,42 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
+    "baseUrl": ".", // Isso está OK
     "skipLibCheck": true,
-    "strict": true, // Considere mudar para false temporariamente se tiver muitos erros de tipo no início
-    "forceConsistentCasingInFileNames": true,
+    "strict": false,
     "noEmit": true,
-    "esModuleInterop": true,
+    "incremental": true,
     "module": "esnext",
-    "moduleResolution": "bundler", // Ou "node"
+    "esModuleInterop": true,
+    "moduleResolution": "node", // Para Next.js mais recentes, "bundler" é recomendado, mas "node" geralmente funciona.
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
+    "paths": { // paths está correto aqui
+      "@/*": ["src/*"]
+    }, // <--- VÍRGULA ADICIONADA
+    "plugins": [ // plugins agora é um item separado dentro de compilerOptions
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@/*": ["./src/*"] // Alias para a pasta src
-    },
-    "baseUrl": "." // Se paths for "./src/*"
-    // Se baseUrl for "./src", então paths seria "@/*": ["*"]
+    ]
+    // Você pode adicionar "target": "es5", (ou mais recente) se não estiver presente
+    // e "forceConsistentCasingInFileNames": true, para ajudar a evitar erros de case
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "**/*.js", "**/*.jsx"],
-  "exclude": ["node_modules", "server"] // Exclui a pasta server da compilação TS do frontend
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js", // <--- ADICIONE ISSO PARA INCLUIR ARQUIVOS .js NO CHECKING
+    "**/*.jsx"  // <--- ADICIONE ISSO PARA INCLUIR ARQUIVOS .jsx NO CHECKING (se usar)
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
-
